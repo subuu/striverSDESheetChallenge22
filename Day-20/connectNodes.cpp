@@ -1,0 +1,16 @@
+void connectNodes(BinaryTreeNode< int > *root) {
+    // Write your code here.
+    if(!root) return;
+    queue<BinaryTreeNode<int> *> q;
+    q.push(root);
+    
+    while(!q.empty()){
+        int size = q.size();
+        while(size--){
+            BinaryTreeNode<int> * node = q.front(); q.pop();
+            if(size > 0) node->next = q.front();
+            if(node->left) q.push(node->left);
+            if(node->right) q.push(node->right);
+        } 
+    }
+}
